@@ -8,7 +8,9 @@ then
 else
     mkdir build
     cd build
+    cmake ..
 fi
 
-cmake ..
 make
+
+cd -
