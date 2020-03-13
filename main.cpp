@@ -18,6 +18,15 @@ int main() {
     std::cout << "heap sort:" << std::endl;
     heapSorted_array heap_array(unorder);
     heap_array.display();
+    say_size(heap_array);
+
+    std::cout << "quick sort:" << std::endl;
+    quick_sort quicker(unorder);
+    display(quicker);
+
+    std::cout << "counting sort:" << std::endl;
+    counting_sort counter(unorder);
+    display(counter);
 
     std::cout << "*******************" << std::endl;
     add(1.5, 2.5);

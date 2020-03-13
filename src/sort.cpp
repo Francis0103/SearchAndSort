@@ -17,7 +17,7 @@ vector<int> Sort::insertSort(vector<int> input_list) {
 }
 
 void heapSorted_array::build_maxHeap() {
-    for(int i = heap_size / 2; i >=1; i--) {
+    for (int i = heap_size / 2; i >=1; i--) {
         max_heapify(i);
     }
 }
@@ -60,5 +60,63 @@ void heapSorted_array::display() {
     }
     std::cout << std::endl;
 }
-    
 
+int quick_sort::partition(int begin, int end) {
+    int key = sorted_vector[end];
+    int less_index = begin - 1;
+    if (begin < end) {
+       for(unsigned int i = begin; i < end; i++) {
+           if (sorted_vector[i] < key) {
+               less_index++;
+               int temp = sorted_vector[i];
+               sorted_vector[i] = sorted_vector[less_index];
+               sorted_vector[less_index] = temp;
+           }
+       }
+       less_index++;
+       int temp = sorted_vector[end];
+       sorted_vector[end] = sorted_vector[less_index];
+       sorted_vector[less_index] = temp;
+    }
+    return less_index;
+}
+
+void quick_sort::quick_sorted(int begin, int end) {
+    if (end - begin >= 1) {
+        int med = partition(0, end);
+        quick_sorted(0, med - 1);
+        quick_sorted(med + 1, end);
+    }
+}
+
+void counting_sort::counting_sorted() {
+    int c[100] = {0}; // c style array does't need free
+    vector<int> b(heap_size, 0);
+    for(unsigned int i = 0; i < heap_size; i++) {
+       c[sorted_vector[i]] = ++c[sorted_vector[i]];
+    }
+    for(unsigned int i = 1; i < 100; i++) {
+        c[i] = c[i] + c[i-1];
+    }
+    for(unsigned int i = 0; i < heap_size; i++) {
+        b[c[sorted_vector[i]] - 1] = sorted_vector[i];
+        c[sorted_vector[i]]--;
+    }
+    b.swap(sorted_vector);
+}
+
+void base_sort::base_sorted() {
+   quick_sort quicker;
+}
+
+void base_sort::base_num(int n) {
+    vector<int> base;
+    for(unsigned int i = 0; i < heap_size; i++) {
+        base.push_back(sorted_vector[i] % (10 * n));
+    }
+}
+
+void say_size(heapSorted_array array) {
+
+    std::cout << "heapSorted array size is " << array.heap_size << std::endl;
+}
