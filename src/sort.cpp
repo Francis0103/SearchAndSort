@@ -116,6 +116,49 @@ void base_sort::base_num(int n) {
     }
 }
 
+void merge_sort::merge(int p, int q, int r) {
+    int l1 = q - p + 1;
+    int l2 = r - q;
+    vector<int> l1_vector, l2_vector;
+    for (unsigned int i = p; i <= q; i++) {
+        l1_vector.push_back(sorted_vector[i]);
+    }
+    for (unsigned int i = q + 1; i <= r; i++) {
+        l2_vector.push_back(sorted_vector[i]);
+    }
+
+    int i = 0, j = 0, index = p;
+    while (i < l1 && j < l2) {
+        if (l1_vector[i] <= l2_vector[j]) {
+            sorted_vector[index] = l1_vector[i];
+            i++;
+        } else {
+            sorted_vector[index] = l2_vector[j];
+            j++;
+        }
+        index++;
+    }
+    while (i < l1 ) {
+        sorted_vector[index] = l1_vector[i];
+        i++;
+        index++;
+    }
+    while (j < l2 ) {
+        sorted_vector[index] = l2_vector[j];
+        j++;
+        index++;
+    }
+}
+
+void merge_sort::merge_sorted(int p, int r) {
+    if (p < r) {
+        int q = (r + p) / 2;
+        merge_sorted(p, q);
+        merge_sorted(q + 1, r);
+        merge(p, q, r);
+    }
+}
+
 void say_size(heapSorted_array array) {
 
     std::cout << "heapSorted array size is " << array.heap_size << std::endl;

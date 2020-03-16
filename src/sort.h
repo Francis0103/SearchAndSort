@@ -122,6 +122,29 @@ class base_sort {
 
 };
 
+class merge_sort {
+    public:
+        merge_sort() {}
+        merge_sort(vector<int> input_list) {
+            heap_size = input_list.size();
+            for(unsigned int i = 0; i < heap_size; i++) {
+                sorted_vector.push_back(input_list[i]);
+            }
+            merge_sorted(0, heap_size - 1);
+        }
+        void merge(int p, int q, int r);
+        void merge_sorted(int p, int r);
+        template<typename T>
+        friend void display(T sorter);
+
+    private:
+        vector<int> sorted_vector;
+        int heap_size;
+
+
+
+};
+
 void say_size(heapSorted_array array);
 
 // template declaration and definition must be in the same file

@@ -28,6 +28,10 @@ int main() {
     counting_sort counter(unorder);
     display(counter);
 
+    std::cout << "merge sort:" << std::endl;
+    merge_sort merger(unorder);
+    display(merger);
+
     std::cout << "*******************" << std::endl;
     add(1.5, 2.5);
     return 0;
