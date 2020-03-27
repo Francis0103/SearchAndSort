@@ -10,6 +10,7 @@ SET(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall")
 
 #SET(SRC_LIST hello.cpp)
 include_directories(src/)
+include_directories(include/)
 
 file(GLOB _srcFiles "src/*.cpp")
 
@@ -23,6 +24,6 @@ MESSAGE(STATUS "This is message: " ${_srcFiles})
 SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
 
 #ADD_EXECUTABLE(sort ${SRC_LIST})
-ADD_EXECUTABLE(sort  main.cpp ${_srcFiles})
+ADD_EXECUTABLE(sort  rb_main.cpp ${_srcFiles})
 #ADD_SUBDIRECTORY(src bin)
 
